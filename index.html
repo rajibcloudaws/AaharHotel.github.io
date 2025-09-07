@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aahar Hotel - Authentic Sweets & Snacks</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        :root {
+            --primary-color: #ff6347; /* Tomato */
+            --secondary-color: #4b4b4b; /* Dark Grey */
+            --bg-light: #fef8f0; /* Light Cream */
+            --text-dark: #2c2c2c; /* Almost Black */
+            --text-light: #ffffff; /* White */
+            --accent-color: #ffd700; /* Gold */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--text-light);
+            padding: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .navbar a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 25px;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: var(--primary-color);
+        }
+
+        .lang-toggle {
+            font-size: 0.9em;
+        }
+
+        .lang-toggle button {
+            background: none;
+            border: none;
+            color: var(--secondary-color);
+            cursor: pointer;
+            font-weight: 600;
+            padding: 5px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .lang-toggle button:hover {
+            background-color: var(--accent-color);
+            color: var(--text-dark);
+        }
+        .lang-toggle button.active {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+        }
+        .lang-toggle button + button {
+            margin-left: 5px;
+        }
+
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--text-light);
+        }
+
+        .hero {
+            background-color: var(--bg-light);
+            padding: 100px 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e04832;
+            transform: translateY(-3px);
+        }
+
+        .about {
+             text-align: center;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .about-image {
+            max-width: 400px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .about-text {
+            max-width: 600px;
+            text-align: left;
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Menu Section */
+        .menu-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .menu-item {
+            background-color: var(--bg-light);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 250px;
+            text-align: center;
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .menu-item h4 {
+            font-size: 1.4em;
+            color: var(--primary-color);
+        }
+
+        /* Bulk Orders */
+        .bulk-orders-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+            padding: 30px;
+            background-color: var(--bg-light);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .bulk-orders-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .bulk-orders-form input,
+        .bulk-orders-form textarea,
+        .bulk-orders-form select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .bulk-orders-form .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 40px;
+            text-align: left;
+        }
+        
+        .contact-info div {
+            flex-basis: 300px;
+        }
+
+        .contact-info h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 350px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 0.9em;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .navbar a {
+                margin: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .menu-grid {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .menu-item {
+                width: 90%;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="container">
+        <a href="#" class="logo">Aahar Hotel</a>
+        <nav class="navbar">
+            <a href="#home" data-lang-key="nav_home">Home</a>
+            <a href="#menu" data-lang-key="nav_menu">Our Menu</a>
+            <a href="#bulk" data-lang-key="nav_bulk">Bulk Orders</a>
+            <a href="#contact" data-lang-key="nav_contact">Contact Us</a>
+        </nav>
+        <div class="lang-toggle">
+            <button class="active" onclick="setLanguage('en')">English</button>
+            <button onclick="setLanguage('as')">অসমীয়া</button>
+            <button onclick="setLanguage('bn')">বাংলা</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 data-lang-key="hero_title">Experience the Taste of Tradition at Aahar Hotel</h1>
+            <p data-lang-key="hero_tagline">Indulge in Authentic Sweets and Savory Snacks</p>
+            <a href="#menu" class="btn" data-lang-key="hero_cta">View Our Menu</a>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 data-lang-key="about_title">Aahar Hotel: A Taste of Howly</h2>
+            <div class="about-content">
+                <img src="https://placehold.co/400x300/e0e0e0/555555?text=Aahar+Hotel" alt="Aahar Hotel Entrance" class="about-image">
+                <div class="about-text">
+                    <p data-lang-key="about_text">Welcome to Aahar Hotel, a local favorite in Howly, Barpeta. For years, we've been serving the community with traditional sweets and snacks made with love and the finest ingredients. Our commitment is to provide you with an unforgettable culinary experience, whether it's for a quick snack or a special celebration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Specialties (Menu) Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <h2 data-lang-key="menu_title">Our Menu</h2>
+            <h3 data-lang-key="menu_subtitle">A Sweet and Savory Delight</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://placehold.co/250x250/fff0e0/ff6347?text=Rosogolla" alt="Rosogolla">
+                    <h4>Rosogolla</h4>
+                    <p data-lang-key="menu_rosogolla">Melt-in-your-mouth soft and spongy Rosogolla.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://placehold.co/250x250/fff0e0/ff6347?text=Gulab+Jamun" alt="Gulab Jamun">
+                    <h4>Gulab Jamun</h4>
+                    <p data-lang-key="menu_gulab">Rich, golden, and soaked in sweet syrup.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://placehold.co/250x250/fff0e0/4b4b4b?text=Samosa" alt="Samosa">
+                    <h4>Samosa</h4>
+                    <p data-lang-key="menu_samosa">Crispy and spicy, filled with spiced potatoes.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://placehold.co/250x250/fff0e0/4b4b4b?text=Puri" alt="Puri & Sabji">
+                    <h4>Puri & Sabji</h4>
+                    <p data-lang-key="menu_puri">Hot, fluffy puris served with a delicious vegetable curry.</p>
+                </div>
+                 <div class="menu-item">
+                    <img src="https://placehold.co/250x250/fff0e0/4B4B4B?text=Parotha+%26+Sabji" alt="Parotha & Sabji">
+                    <h4>Parotha & Sabji</h4>
+                    <p data-lang-key="menu_parotha">Hot, flaky parothas served with a delicious spiced vegetable curry.</p>
+                </div>
+                <div class="menu-item">
+                    <img src="https://placehold.co/250x250/fff0e0/4B4B4B?text=And+More!" alt="And Many More">
+                    <h4>And Many More...</h4>
+                    <p data-lang-key="menu_more">Discover a wide variety of other delicious sweets and snacks on your next visit!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bulk Orders Section -->
+    <section id="bulk" class="bulk-orders">
+        <div class="container">
+            <h2 data-lang-key="bulk_title">Planning a Celebration? Order in Bulk!</h2>
+            <p data-lang-key="bulk_text">Make your events special with Aahar Hotel's delicious sweets and snacks. We cater to all occasions - weddings, birthdays, festivals, and corporate gatherings. Place your bulk order now for timely delivery and guaranteed freshness.</p>
+            <form action="#" class="bulk-orders-form">
+                <label for="name" data-lang-key="bulk_name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="phone" data-lang-key="bulk_phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="email" data-lang-key="bulk_email">Email</label>
+                <input type="email" id="email" name="email">
+                
+                <label for="event" data-lang-key="bulk_event">Type of Event</label>
+                <input type="text" id="event" name="event">
+
+                <label for="order" data-lang-key="bulk_items">Items & Quantity</label>
+                <textarea id="order" name="order" rows="4" required></textarea>
+
+                <label for="date" data-lang-key="bulk_date">Preferred Delivery Date</label>
+                <input type="date" id="date" name="date" required>
+                
+                <button type="submit" class="btn" data-lang-key="bulk_cta">Request a Quote</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 data-lang-key="contact_title">Find Us</h2>
+            <div class="contact-info">
+                <div>
+                    <h4 data-lang-key="contact_address">Address</h4>
+                    <p>Aahar Hotel, Opposite Howly Jama Masjid, Howly, Dist: Barpeta, Pin Code: 781316</p>
+                </div>
+                <div>
+                    <h4 data-lang-key="contact_info">Contact</h4>
+                    <p>Phone: +91 [Your Phone Number]</p>
+                    <p>Email: <a href="mailto:contact@aaharhotel.com">contact@aaharhotel.com</a></p>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11526.476483176662!2d90.9634898!3d26.467822!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x375aa4d76f8236d9%3A0x1d4a8e2e2b2023a1!2sHowly%20Jama%20Masjid!5e0!3m2!1sen!2sin!4v1701234567890!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Aahar Hotel. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const languageData = {
+            en: {
+                nav_home: "Home",
+                nav_menu: "Our Menu",
+                nav_bulk: "Bulk Orders",
+                nav_contact: "Contact Us",
+                hero_title: "Experience the Taste of Tradition at Aahar Hotel",
+                hero_tagline: "Indulge in Authentic Sweets and Savory Snacks",
+                hero_cta: "View Our Menu",
+                about_title: "Aahar Hotel: A Taste of Howly",
+                about_text: "Welcome to Aahar Hotel, a local favorite in Howly, Barpeta. For years, we've been serving the community with traditional sweets and snacks made with love and the finest ingredients. Our commitment is to provide you with an unforgettable culinary experience, whether it's for a quick snack or a special celebration.",
+                menu_title: "Our Menu",
+                menu_subtitle: "A Sweet and Savory Delight",
+                menu_rosogolla: "Melt-in-your-mouth soft and spongy Rosogolla.",
+                menu_gulab: "Rich, golden, and soaked in sweet syrup.",
+                menu_samosa: "Crispy and spicy, filled with spiced potatoes.",
+                menu_puri: "Hot, fluffy puris served with a delicious vegetable curry.",
+                menu_parotha: "Hot, flaky parothas served with a delicious spiced vegetable curry.",
+                menu_more: "Discover a wide variety of other delicious sweets and snacks on your next visit!",
+                bulk_title: "Planning a Celebration? Order in Bulk!",
+                bulk_text: "Make your events special with Aahar Hotel's delicious sweets and snacks. We cater to all occasions - weddings, birthdays, festivals, and corporate gatherings. Place your bulk order now for timely delivery and guaranteed freshness.",
+                bulk_name: "Name",
+                bulk_phone: "Phone Number",
+                bulk_email: "Email",
+                bulk_event: "Type of Event",
+                bulk_items: "Items & Quantity",
+                bulk_date: "Preferred Delivery Date",
+                bulk_cta: "Request a Quote",
+                contact_title: "Find Us",
+                contact_address: "Address",
+                contact_info: "Contact"
+            },
+            as: {
+                nav_home: "গৃহ",
+                nav_menu: "আমাৰ মেনু",
+                nav_bulk: "বাল্ক অৰ্ডাৰ",
+                nav_contact: "যোগাযোগ কৰক",
+                hero_title: "আহার হোটেলত পৰম্পৰাৰ সোৱাদ অনুভৱ কৰক",
+                hero_tagline: "পৰম্পৰাগত মিঠাই আৰু সোৱাদযুক্ত জলপানৰ সোৱাদ লওক",
+                hero_cta: "আমাৰ মেনু চাওক",
+                about_title: "আহার হোটেল: হাউলীৰ এটা সোৱাদ",
+                about_text: "আহার হোটেললৈ স্বাগতম, হাউলী, বৰপেটাৰ এটা স্থানীয় প্রিয় ঠাই। বছৰ বছৰ ধৰি আমি ভালপোৱা আৰু শ্ৰেষ্ঠ সামগ্ৰীৰে তৈয়াৰী পৰম্পৰাগত মিঠাই আৰু জলপানৰ সৈতে সম্প্ৰদায়টোক সেৱা আগবঢ়াই আহিছোঁ। এটা ক্ষীপ্ৰ জলপান হওঁক বা এটা বিশেষ উদযাপন, আপোনাক এটা অবিস্মৰণীয় খাদ্য অভিজ্ঞতা প্ৰদান কৰাটোৱেই হৈছে আমাৰ প্ৰতিশ্ৰুতি।",
+                menu_title: "আমাৰ মেনু",
+                menu_subtitle: "এটা মিঠা আৰু সোৱাদযুক্ত আনন্দ",
+                menu_rosogolla: "আপোনাৰ মুখত গলি যোৱা কোমল আৰু স্পঞ্জি ৰসগোল্লা।",
+                menu_gulab: "চেনীৰ ৰসেৰে পূৰ্ণ, সোণালী বৰণৰ গোলাপ জামুন।",
+                menu_samosa: "মচমচীয়া আৰু মচলাযুক্ত, মচলাযুক্ত আলুৰে ভৰা।",
+                menu_puri: "গৰম, ফোলা পুৰি সুস্বাদু শাক-পাচলিৰ আঞ্জাৰে পৰিৱেশন কৰা হয়।",
+                menu_parotha: "গৰম, ফোলা পৰোঠা সুস্বাদু মচলাযুক্ত শাক-পাচলিৰ আঞ্জাৰে পৰিৱেশন কৰা হয়।",
+                menu_more: "আপোনাৰ পৰৱৰ্তী ভ্ৰমণত আন বহুতো সুস্বাদু মিঠাই আৰু জলপান আৱিষ্কাৰ কৰক!",
+                bulk_title: "এটা উদযাপনৰ পৰিকল্পনা কৰিছেন? বাল্কত অৰ্ডাৰ দিয়ক!",
+                bulk_text: "আপোনাৰ অনুষ্ঠানবোৰক আহার হোটেলৰ সুস্বাদু মিঠাই আৰু জলপানেৰে বিশেষ কৰক। আমি সকলো অনুষ্ঠানৰ বাবে কেটাৰিং কৰোঁ - বিবাহ, জন্মদিন, উৎসৱ, আৰু কৰ্পোৰেট সমাৱেশ। সময়মতে ডেলিভাৰী আৰু সতেজতাৰ নিশ্চয়তাৰ বাবে এতিয়াই আপোনাৰ বাল্ক অৰ্ডাৰ দিয়ক।",
+                bulk_name: "নাম",
+                bulk_phone: "ফোন নম্বৰ",
+                bulk_email: "ইমেইল",
+                bulk_event: "অনুষ্ঠানৰ প্ৰকাৰ",
+                bulk_items: "সামগ্ৰী আৰু পৰিমাণ",
+                bulk_date: "পছন্দৰ ডেলিভাৰী তাৰিখ",
+                bulk_cta: "উদ্ধৃতিৰ বাবে অনুৰোধ কৰক",
+                contact_title: "আমাৰ ঠিকনা",
+                contact_address: "ঠিকনা",
+                contact_info: "যোগাযোগ"
+            },
+            bn: {
+                nav_home: "হোম",
+                nav_menu: "আমাদের মেনু",
+                nav_bulk: "বাল্ক অর্ডার",
+                nav_contact: "যোগাযোগ করুন",
+                hero_title: "আহার হোটেলে ঐতিহ্যের স্বাদ অনুভব করুন",
+                hero_tagline: "ঐতিহ্যবাহী মিষ্টি এবং সুস্বাদু স্ন্যাক্স উপভোগ করুন",
+                hero_cta: "আমাদের মেনু দেখুন",
+                about_title: "আহার হোটেল: হাউলীর একটি স্বাদ",
+                about_text: "আহার হোটেলে স্বাগতম, বরপেটার হাউলিতে একটি স্থানীয় প্রিয় স্থান। বছরের পর বছর ধরে, আমরা ভালোবাসা এবং সেরা উপাদান দিয়ে তৈরি ঐতিহ্যবাহী মিষ্টি এবং স্ন্যাক্স দিয়ে কমিউনিটিকে পরিবেশন করে আসছি। একটি দ্রুত স্ন্যাক বা একটি বিশেষ উদযাপনের জন্য, আপনাকে একটি অবিস্মরণীয় রান্নার অভিজ্ঞতা দেওয়া আমাদের প্রতিশ্রুতি।",
+                menu_title: "আমাদের মেনু",
+                menu_subtitle: "একটি মিষ্টি এবং সুস্বাদু আনন্দ",
+                menu_rosogolla: "মুখে গলে যাওয়া নরম এবং স্পঞ্জি রসগোল্লা।",
+                menu_gulab: "মধুর রসে ভেজানো, সমৃদ্ধ এবং সোনালী গোলাপ জামুন।",
+                menu_samosa: "খসখসে এবং মশলাদার, মশলাযুক্ত আলু দিয়ে ভরা।",
+                menu_puri: "গরম, ফুলকো পুরি সুস্বাদু সবজির তরকারির সাথে পরিবেশন করা হয়।",
+                menu_parotha: "গরম, ফুলকো পরোটা সুস্বাদু মশলাদার সবজির তরকারির সাথে পরিবেশন করা হয়।",
+                menu_more: "আপনার পরবর্তী পরিদর্শনে আরও অনেক সুস্বাদু মিষ্টি এবং স্ন্যাক্স আবিষ্কার করুন!",
+                bulk_title: "একটি উদযাপনের পরিকল্পনা করছেন? বাল্কে অর্ডার দিন!",
+                bulk_text: "আহার হোটেলের সুস্বাদু মিষ্টি এবং স্ন্যাকস দিয়ে আপনার অনুষ্ঠানগুলিকে বিশেষ করে তুলুন। আমরা সব অনুষ্ঠানে ক্যাটারিং করি - বিয়ে, জন্মদিন, উৎসব, এবং কর্পোরেট সমাবেশ। সময়মতো ডেলিভারি এবং সতেজতার নিশ্চয়তার জন্য এখনই আপনার বাল্ক অর্ডার দিন।",
+                bulk_name: "নাম",
+                bulk_phone: "ফোন নম্বর",
+                bulk_email: "ইমেইল",
+                bulk_event: "অনুষ্ঠানের প্রকার",
+                bulk_items: "পণ্য ও পরিমাণ",
+                bulk_date: "পছন্দের ডেলিভারি তারিখ",
+                bulk_cta: "উদ্ধৃতির জন্য অনুরোধ করুন",
+                contact_title: "আমাদের ঠিকানা",
+                contact_address: "ঠিকানা",
+                contact_info: "যোগাযোগ"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (languageData[lang] && languageData[lang][key]) {
+                    element.textContent = languageData[lang][key];
+                }
+            });
+            
+            document.querySelectorAll('.lang-toggle button').forEach(button => {
+                if (button.getAttribute('onclick').includes(lang)) {
+                    button.classList.add('active');
+                } else {
+                    button.classList.remove('active');
+                }
+            });
+        }
+
+        // Set initial language to English
+        document.addEventListener('DOMContentLoaded', () => {
+            setLanguage('en');
+        });
+    </script>
+</body>
+</html>
